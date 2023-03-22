@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}Balance{% endblock %}
+{% block content %}
+<b>Balance:</b> {{ person_zoobars if person_zoobars > 0 else 0 }} zoobars<br />
+{% endblock %}
+{% block postscript %}
+<center>
+    <b>Profile picture:</b>
+    <br />
+    <img src="{{ person.picture }}" width="200" height="200" class="profile_picture" />
+    <br />
+    <form method="POST" name="pictureform" enctype="multipart/form-data">
+        <input type="file" name="picture_upload" accept="image/jpg, image/jpeg, image/png" />
+        <input type="submit" name="picture_submit" value="Upload" />
+        <br />
+        <small>Image type is limited to jpeg/jpg/png.</small>
+    </form>
+    <b>Your profile:</b>
+    <form method="POST" name="profileform">
+        <textarea name="profile_update" rows="20" cols="80">{{ person.profile }}</textarea>
+        <br />
+        <input type="submit" name="profile_submit" value="Save" />
+    </form>
+</center>
+{% endblock %}
